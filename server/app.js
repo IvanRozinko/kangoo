@@ -3,6 +3,7 @@ const config = require('config')
 const mongoose = require('mongoose');
 const webpush = require('web-push')
 const dotenv = require('dotenv')
+const path = require('path')
 
 const app = express();
 
@@ -13,6 +14,14 @@ app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/training', require('./routes/training.routes'))
 app.use('/api/users', require('./routes/users.routes'))
 app.use('/api/notifications', require('./routes/subscription.routes'))
+
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.join(__dirname, 'build')))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+  })
+}
 
 const PORT = config.get('port') || 5000;
 

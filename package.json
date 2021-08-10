@@ -33,8 +33,8 @@
     "eject": "react-scripts eject",
     "server": "nodemon ./server/app.js",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run start\"",
-    "client:install": "npm install",
-    "client:build": "npm build"
+    "client:install": "npm run install",
+    "client:build": "npm run build"
   },
   "eslintConfig": {
     "extends": [
