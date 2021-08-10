@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "jwtSecret": "kangoo krop",
+  "mongoUri": "mongodb+srv://KangooAdmin:!KangooAdmin@cluster0.fmeyv.mongodb.net/kangoodb?retryWrites=true&w=majority",
+  "trainerPhone": "+380660034254"
+}
