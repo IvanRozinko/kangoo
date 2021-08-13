@@ -93,6 +93,7 @@ router.post(
     res.json({ token, userId: user.id, isTrainer: isTrainer(user.phone) })
 
   } catch (e) {
+    console.log(e)
     res.status(500).json({ message: 'Server error, try again' })
   }
 })
