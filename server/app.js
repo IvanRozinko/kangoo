@@ -18,6 +18,10 @@ app.use('/api/notifications', require('./routes/subscription.routes'))
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'build')))
 
+  app.get("/service-worker.js", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "build", "service-worker.js"));
+  });
+
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
   })
