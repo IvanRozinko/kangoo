@@ -29,11 +29,15 @@ self.addEventListener('notificationclick', event => {
 
   const url = event.notification.data.url
   const trainingId = url.split('/').pop();
+  console.log(url)
+  console.log(trainingId)
   
   event.waitUntil(
     self.clients.matchAll({ type: 'window'})
     .then(clientsArr => {
+      console.log(clientsArr)
       const appTab = clientsArr[0];
+
       if (appTab) {
         appTab.focus();
         appTab.postMessage({

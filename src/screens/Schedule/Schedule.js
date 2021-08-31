@@ -18,7 +18,6 @@ function Schedule() {
   const handlePushSubscription = useCallback(
     async () => {
       const user = await request('/api/users/user')
-      console.log(user)
       if (user.allowNotifications) {
         setTimeout(() => setOpenDialog(true), 2000)
       }

@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "kangoo-app-host"
+    "default": "kangoo-app-host",
+    "prod": "kangoo-app-host",
+    "dev": "kangoo-app-host-dev"
   }
 }

@@ -5,6 +5,8 @@ const router = new Router()
 const Training = require('../models/Training')
 const User = require('../models/User')
 const auth = require('../middleware/auth.middleware')
+const { config } = require('../config/index')
+
 
 // /api/training
 
@@ -97,7 +99,7 @@ router.post(
           body: {
             datetime,
             location,
-            url: `${process.env.REACT_APP_BASE_URL}/training/${training._id}`
+            url: `${config.baseUrl}/training/${training._id}`
           }
         }
 

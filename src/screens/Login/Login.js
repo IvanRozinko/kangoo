@@ -37,7 +37,6 @@ function Login() {
   const handleButtonClick = async () => {
     try {
       const data = await request('/api/auth/login', 'POST', {...form})
-      console.log(data)
       if (data.token) {
         auth.login(data.token, data.userId, data.isTrainer)
       }

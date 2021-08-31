@@ -18,7 +18,6 @@ export const useHttp = () => {
       headers['authorization'] = `Bearer ${auth.token}`
 
       const response = await fetch(url, { method, body, headers })
-      console.log(response)
       const data = await response.json()
 
       if (!response.ok) {
@@ -29,7 +28,6 @@ export const useHttp = () => {
       return data
 
     } catch (e) {
-      console.log(e)
       setLoading(false)
       setError(e.message)
       throw e
