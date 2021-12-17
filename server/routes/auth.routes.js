@@ -1,11 +1,12 @@
 const {Router} = require('express')
 const bcrypt = require('bcryptjs');
+const config = require('config')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
-const router = new Router()
-const config = require('config')
 
+
+const router = new Router()
 const isTrainer = phone => phone === config.get('trainerPhone')
 
 // /api/auth/register

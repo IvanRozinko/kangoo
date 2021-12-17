@@ -2,6 +2,7 @@
   "name": "kangoo",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@material-ui/core": "^4.12.2",
@@ -20,18 +21,14 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node app.js",
-    "build": "cross-env BUILD_PATH='./functions/build' react-scripts build && cra-append-sw --skip-compile ./functions/build/custom-sw.js",
+    "client": "cross-env react-scripts start",
+    "start": "node ./server/app.js",
+    "build": "cross-env react-scripts build && cra-append-sw --skip-compile ./build/custom-sw.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon ./server/app.js",
-    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run start\"",
-    "client:install": "npm run install",
-    "client:build": "npm run build",
-    "deploy:dev": "firebase use dev && npm run build && firebase deploy --only 'functions,hosting'",
-    "serve:dev": "firebase use dev && npm run build && firebase serve --only 'functions,hosting'",
-    "deploy:prod": "firebase use prod && npm run build && firebase deploy --only 'functions,hosting'",
-    "serve:prod": "firebase use prod && npm run build && firebase serve --only 'functions,hosting'"
+    "dev": "cross-env concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd server && npm install && cd .. && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "eslintConfig": {
     "extends": [
